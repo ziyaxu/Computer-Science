@@ -1,0 +1,13 @@
+Suzy Queue IBM no
+
+Linc List APL yes
+
+Sally Field DGT ?
+
+Busy Queue DGT yes
+
+Busy2 Queue DGT no
+
+Lincoln List APL no
+
+Quincy Bee IBM no
