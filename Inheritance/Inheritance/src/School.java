@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class School {
@@ -82,9 +81,14 @@ public class School {
 	}
 	
 	public void printStudents() {
-		for (HSStudent student: school) {
-			student.toString();
+		for (int i = 0; i < numStudents; i++) {
+			school[i].toString();
 		}
+		
+		
+		/*for (Student student: school) {
+			student.toString();
+		}*/
 	}
 	
 	public static void main (String[] args) throws IOException {

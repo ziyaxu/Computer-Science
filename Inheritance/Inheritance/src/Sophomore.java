@@ -24,6 +24,6 @@ public class Sophomore extends HSStudent{
 	}
 	
 	public String toString() {
-		return toString() + '\n' + getFirstName() + " " + getLastName() + "'s freshman year math grade is " + ninthMathGrade + ".";
+		return super.toString() + '\n' + getFirstName() + " " + getLastName() + "'s freshman year math grade is " + ninthMathGrade + ".";
 	}
 }

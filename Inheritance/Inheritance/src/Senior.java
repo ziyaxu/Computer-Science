@@ -39,7 +39,7 @@ public class Senior extends HSStudent{
 	}
 	
 	public String toString() {
-		return toString() + '\n' + getFirstName() + " " + getLastName() + " owes $" + finesOwed + " in fines to the school.";
+		return super.toString() + '\n' + getFirstName() + " " + getLastName() + " owes $" + finesOwed + " in fines to the school.";
 	}
 
 }

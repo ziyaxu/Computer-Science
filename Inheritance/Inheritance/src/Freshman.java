@@ -24,6 +24,6 @@ public class Freshman extends HSStudent{
 	}
 	
 	public String toString() {
-		return toString() + '\n' + getFirstName() + " " + getLastName() + " has " + numReferrals + ".";
+		return super.toString() + '\n' + getFirstName() + " " + getLastName() + " has " + numReferrals + ".";
 	}
 }

@@ -28,7 +28,7 @@ public class Junior extends HSStudent{
 	}
 	
 	public String toString() {
-		return toString() + '\n' + getFirstName() + " " + getLastName() + "'s keystone level is " + getKeystoneGrade() + ".";
+		return super.toString() + '\n' + getFirstName() + " " + getLastName() + "'s keystone level is " + getKeystoneGrade() + ".";
 	}
 
 }
