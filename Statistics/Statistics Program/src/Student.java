@@ -71,6 +71,11 @@ public class Student {
 		courseCode = code;
 	}
 	
+	/**
+	 * Chooses which value of the student to sort by
+	 * @param methodChoice
+	 * @return the selected value of the student
+	 */
 	public int getSortValue(int methodChoice) {
 		//choose which value to compare
 	    if (methodChoice == School.ID_SORT) {
@@ -80,6 +85,9 @@ public class Student {
 	    }
 	}
 	
+	/**
+	 * @return Student data as a string
+	 */
 	public String studentToString() {
 		return getID() + " " + '\t' //space needed in this line otherwise id and test score are added
 				+ getTestScore() + '\t' 
