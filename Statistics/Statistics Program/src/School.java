@@ -33,6 +33,7 @@ public class School {
 	private int highestScore = 0;
 	private int lowestScore = 100;
 	private int sumTestScores = 0;
+	private int numA = 0, numB = 0, numC = 0, numD = 0, numF = 0;
 	
 	//empty constructor
 	public School() {
@@ -93,6 +94,19 @@ public class School {
 		}
 	}
 	
+	public void countGrades(int grade) {
+		if (grade >= 0 && grade <= 65)
+			numF++;
+		else if (grade <= 70)
+			numD++;
+		else if (grade <= 80)
+			numC++;
+		else if (grade <= 90)
+			numB++;
+		else if (grade <= 100) //else if because grade could be higher
+			numA++;
+	}
+	
 	//method to sort the student array
 	//takes integer argument to determine what value to sort by
 	//0 for ID sort, anything else for Test score sort
@@ -131,6 +145,7 @@ public class School {
 	}
 	
 	//method to find the mean
+	//adds tally to number of scoures
 	//returns the mean as a double rounded to two decimal places
 	public double mean() {
 		for (int i = 0; i < numStudents; i++) {
@@ -139,6 +154,17 @@ public class School {
 			} else if (students[i].getTestScore() > 100) {
 				numInvalidScoresBack++;
 			} else {
+				if (students[i].getTestScore() >= 0 && students[i].getTestScore() < 65)
+					numF++;
+				else if (students[i].getTestScore() < 70)
+					numD++;
+				else if (students[i].getTestScore() < 80)
+					numC++;
+				else if (students[i].getTestScore() < 90)
+					numB++;
+				else //else if because students[i].getTestScore() could be higher
+					numA++;
+				
 				sumTestScores += students[i].getTestScore();
 				checkHighLow(i);
 			}
@@ -166,6 +192,25 @@ public class School {
 		return "There are " + (numInvalidScoresFront + numInvalidScoresBack) + " invalid scores.";
 	}
 	
+	//method to find the print the percentages of each letter grade
+	public void printPercents() {
+		
+		int total = numStudents - numInvalidScoresFront - numInvalidScoresBack;
+		
+		double A = (double) numA / total;
+		double B = (double) numB / total;
+		double C = (double) numC / total;
+		double D = (double) numD / total;
+		double F = (double) numF / total;
+		
+		System.out.println("Letter" + '\t' + "Tally" + '\t' + "Percent");
+		System.out.println("A" + '\t' + numA + " " + '\t' + (int) (A * 1000 + 0.5) / 10.0 + "%");
+		System.out.println("B" + '\t' + numB + " " + '\t' + (int) (B * 1000 + 0.5) / 10.0 + "%");
+		System.out.println("C" + '\t' + numC + " " + '\t' + (int) (C * 1000 + 0.5) / 10.0 + "%");
+		System.out.println("D" + '\t' + numD + " " + '\t' + (int) (D * 1000 + 0.5) / 10.0 + "%");
+		System.out.println("F" + '\t' + numF + " " + '\t' + (int) (F * 1000 + 0.5) / 10.0 + "%");
+	}
+	
 	//method to print all of the statistics
 	public void printStats() {
 		System.out.println("Mean: " + mean());
@@ -173,6 +218,7 @@ public class School {
 		System.out.println("Highest Score: " + highestScore);
 		System.out.println("Lowest Score: " + lowestScore);
 		System.out.println(toStringNumInvalid());
+		printPercents();
 	}
 	
 	
@@ -218,9 +264,75 @@ public class School {
 		foxChapel.sortStudents(TEST_SORT);
 		foxChapel.printStats();
 		
-		/*main method for second statistic program*/
-		foxChapel.printSoughtStudent();
+		/*main method for second statistic program
+		foxChapel.printSoughtStudent();*/
 	}
-	
-
 }
+
+/*
+Enter the name of the file.
+scores1.txt
+ID	Score	Course Name
+11 	0	Engineering
+22 	500	Art
+27 	90	Incorrect Course Code
+32 	-10	Art
+33 	110	Business
+39 	400	Incorrect Course Code
+43 	95	Computer Science
+50 	-8	Mathematics
+55 	99	Education
+63 	50	Engineering
+65 	88	Mathematics
+73 	89	Education
+75 	80	Computer Science
+87 	-5	Business
+93 	100	Engineering
+Mean: 76.78
+Median: 89.0
+Highest Score: 100
+Lowest Score: 0
+There are 6 invalid scores.
+Letter	Tally	Percent
+A	4 	44.4%
+B	3 	33.3%
+C	0 	0.0%
+D	0 	0.0%
+F	2 	22.2%
+
+Enter the name of the file.
+scores2.txt
+ID	Score	Course Name
+11 	70	Engineering
+17 	85	Engineering
+22 	500	Art
+27 	90	Incorrect Course Code
+32 	-10	Art
+33 	90	Business
+39 	400	Incorrect Course Code
+43 	95	Computer Science
+44 	300	Engineering
+50 	8	Mathematics
+53 	87	Business
+55 	99	Education
+63 	50	Engineering
+65 	88	Mathematics
+73 	89	Education
+75 	80	Computer Science
+83 	95	Mathematics
+85 	60	Mathematics
+87 	70	Business
+93 	90	Engineering
+Mean: 77.88
+Median: 87.5
+Highest Score: 99
+Lowest Score: 8
+There are 4 invalid scores.
+Letter	Tally	Percent
+A	6 	37.5%
+B	5 	31.3%
+C	2 	12.5%
+D	0 	0.0%
+F	3 	18.8%
+
+ */
