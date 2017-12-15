@@ -1,0 +1,8 @@
+Hello Mr. Klipa,
+
+I just realized that in my first Statistics program submission, I forgot to comment out the ID Sort line in my main method.
+(It was there because I needed to sort by ID to test the second program.)  The program will still run the same way since
+I was sorting by test scores after the ID sort, but I just wanted to let you know why that extra line was there.
+
+Thanks,
+Ziya Xu

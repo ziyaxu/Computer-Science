@@ -232,7 +232,6 @@ public class School {
 		while (front <= back) {
 			
 			int middle = (front + back) / 2;
-			System.out.println("middle: " + middle + " front: " + front + " back: " + back);
 			
 			if (id < students[middle].getID()) {
 				back = middle - 1;
@@ -248,58 +247,44 @@ public class School {
 	}
 	
 	//method to print the data for the sought student
-	public void printSoughtStudent() throws IOException{
+	public void printSoughtStudent(int index) throws IOException{
 		System.out.println(STUDENT_HEADER);
-		System.out.println(students[searchID(new Integer(inputData(INPUT_ID)))].studentToString());
+		if (index < 0) 
+			System.out.println("Sorry, that student is not in the list.");
+		else
+			System.out.println(students[index].studentToString());
 	}
+	
 	
 	public static void main (String args[]) throws IOException {
 		School foxChapel = new School();
 		
 		foxChapel.readFile();
-		foxChapel.sortStudents(ID_SORT);
 		
-		//main method for first statistics program
+		/*main method for first statistics program
 		foxChapel.printStudentList();
 		foxChapel.sortStudents(TEST_SORT);
-		foxChapel.printStats();
+		foxChapel.printStats();*/
 		
-		/*main method for second statistic program
-		foxChapel.printSoughtStudent();*/
+		//main method for second statistics program
+		foxChapel.sortStudents(ID_SORT);
+		foxChapel.printStudentList();
+		
+		int id = new Integer(inputData(INPUT_ID));
+		int index = foxChapel.searchID(id);
+		
+		while (id != 999) {
+			foxChapel.printSoughtStudent(index);
+			System.out.println("Enter 999 as the ID when you are done.");
+			id = new Integer(inputData(INPUT_ID));
+			index = foxChapel.searchID(id);
+		}
+		
 	}
 }
 
 /*
-Enter the name of the file.
-scores1.txt
-ID	Score	Course Name
-11 	0	Engineering
-22 	500	Art
-27 	90	Incorrect Course Code
-32 	-10	Art
-33 	110	Business
-39 	400	Incorrect Course Code
-43 	95	Computer Science
-50 	-8	Mathematics
-55 	99	Education
-63 	50	Engineering
-65 	88	Mathematics
-73 	89	Education
-75 	80	Computer Science
-87 	-5	Business
-93 	100	Engineering
-Mean: 76.78
-Median: 89.0
-Highest Score: 100
-Lowest Score: 0
-There are 6 invalid scores.
-Letter	Tally	Percent
-A	4 	44.4%
-B	3 	33.3%
-C	0 	0.0%
-D	0 	0.0%
-F	2 	22.2%
-
+Output for modified
 Enter the name of the file.
 scores2.txt
 ID	Score	Course Name
@@ -323,16 +308,47 @@ ID	Score	Course Name
 85 	60	Mathematics
 87 	70	Business
 93 	90	Engineering
-Mean: 77.88
-Median: 87.5
-Highest Score: 99
-Lowest Score: 8
-There are 4 invalid scores.
-Letter	Tally	Percent
-A	6 	37.5%
-B	5 	31.3%
-C	2 	12.5%
-D	0 	0.0%
-F	3 	18.8%
+Enter the id of the student you'd like to search for.
+0
+ID	Score	Course Name
+Sorry, that student is not in the list.
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+11
+ID	Score	Course Name
+11 	70	Engineering
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+27
+ID	Score	Course Name
+27 	90	Incorrect Course Code
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+50
+ID	Score	Course Name
+50 	8	Mathematics
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+65
+ID	Score	Course Name
+65 	88	Mathematics
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+93
+ID	Score	Course Name
+93 	90	Engineering
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+100
+ID	Score	Course Name
+Sorry, that student is not in the list.
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+25
+ID	Score	Course Name
+Sorry, that student is not in the list.
+Enter 999 as the ID when you are done.
+Enter the id of the student you'd like to search for.
+999
 
  */
