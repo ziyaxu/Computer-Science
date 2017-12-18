@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 public class School {
 	
-	public static final String FILE_NAME = "InheritanceSchool.txt";
+	public static final String FILE_NAME = "InheritanceSchool.txt"; //TODO: user input file name?
 	
 	private HSStudent[] school = new HSStudent[10];
 	private int numStudents = 0;
@@ -82,13 +82,12 @@ public class School {
 	
 	public void printStudents() {
 		for (int i = 0; i < numStudents; i++) {
-			school[i].toString();
+			System.out.println(school[i].toString());
 		}
 		
-		
 		/*for (Student student: school) {
-			student.toString();
-		}*/
+			System.out.println(student.toString());
+		}*/ //TODO: Why does this throw null pointer exception?
 	}
 	
 	public static void main (String[] args) throws IOException {

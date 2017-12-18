@@ -2,3 +2,4 @@ Sally Apple 9 4.0 4
 Johnny Apple 11 4.0 4
 Bob Smith 12 2.0 true 45.00
 Taylor Smith 10 3.3 A
+Amanda Apple 9 4.0 5
