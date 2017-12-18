@@ -1,14 +1,14 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class School {
 	
-	public static final String FILE_NAME = "InheritanceSchool.txt"; //TODO: user input file name?
+	public static final String FILE_NAME = "InheritanceSchool.txt";
 	
-	private HSStudent[] school = new HSStudent[10];
-	private int numStudents = 0;
+	private ArrayList<HSStudent> school = new ArrayList<HSStudent>();
 	
 	public School() {
 	}
@@ -19,11 +19,11 @@ public class School {
 		
 		String inputString = inFile.readLine(); //reading one line of file
 		
-		//TODO: ask if this is okay in one method
 		while (inputString != null){
 			appendStudents(inputString);
 			inputString = inFile.readLine();
 		}
+		
 		inFile.close();
 	}
 	
@@ -61,33 +61,26 @@ public class School {
 	}
 	
 	public void addStudent(HSStudent student) {
-		//HSStudent student = new Student(id, grade, course);
-		school[numStudents] = student;
-		numStudents++;
+		school.add(student);
 	}
 	
 	public void sortStudents() {
-		for (int i = 1; i < numStudents; i++) {
+		for (int i = 1; i < school.size(); i++) {
 			
-			HSStudent comparedStudent = school[i];
+			HSStudent comparedStudent = school.get(i);
 			int j = i-1;
            
-            while (j >= 0 && school[j].compareTo(comparedStudent) >= 0) { 
-            	school[j+1] = school[j];
+            while (j >= 0 && school.get(j).compareTo(comparedStudent) >= 0) {
+            	school.set(j+1, school.get(j));
                 j--;
             }
-            school[j+1] = comparedStudent;
+            school.set(j+1, comparedStudent);
 		}
 	}
 	
 	public void printStudents() {
-		for (int i = 0; i < numStudents; i++) {
-			System.out.println(school[i].toString());
-		}
-		
-		/*for (Student student: school) {
+		for (Student student: school)
 			System.out.println(student.toString());
-		}*/ //TODO: Why does this throw null pointer exception?
 	}
 	
 	public static void main (String[] args) throws IOException {
