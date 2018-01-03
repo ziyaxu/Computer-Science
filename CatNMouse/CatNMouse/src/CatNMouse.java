@@ -3,12 +3,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class CatNMouse {
 	
 	public static final String INPUT_FILE = "Enter the name of the file.";
 	
-	private ArrayList<ArrayList<String>> maze;
+	private ArrayList<ArrayList<Character>> maze;
 
 	//asks for user to input file
 	//returns user input
@@ -28,15 +29,31 @@ public class CatNMouse {
 		
 		String inputString = inFile.readLine(); //reading one line of file
 		
+		StringTokenizer inputLine = new StringTokenizer(inputString);
+		ArrayList<Character> row = new ArrayList<Character>();
+		
 		while (inputString != null){
-			appendStudents(inputString);
+			while(inputLine.hasMoreTokens()) {
+				row.add(inputLine.nextToken().charAt(0));
+			}
+			maze.add(row);
 			inputString = inFile.readLine();
 		}
 		
 		inFile.close();
 	}
 	
+	public void printArray() {
+		for (ArrayList<Character> row: maze) {
+			for (char x: row) {
+				System.out.print(x);
+			}
+			System.out.println();
+		}	
+	}
 	
-	
+	public String dim() {
+		return maze.size() + " x " + maze.get(0).size();
+	}
 
 }
