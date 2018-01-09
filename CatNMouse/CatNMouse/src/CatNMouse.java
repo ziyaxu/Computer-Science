@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class CatNMouse {
 	
@@ -15,7 +14,7 @@ public class CatNMouse {
 
 	/**
 	 * asks for user to input file
-	 * static because doesn't make sense to call inputFile method on school object
+	 * static because doesn't make sense to call inputFile method on CatNMouse object
 	 * @return user input
 	 * @throws IOException
 	 */
@@ -33,7 +32,6 @@ public class CatNMouse {
 		
 		String inputString = inFile.readLine(); //reading one line of file
 		
-		
 		while (inputString != null){
 			ArrayList<Character> row = new ArrayList<Character>();
 			
@@ -44,7 +42,6 @@ public class CatNMouse {
 			inputString = inFile.readLine();
 		}
 		
-	
 		inFile.close();
 	}
 	
@@ -59,38 +56,54 @@ public class CatNMouse {
 		return -1;
 	}
 	
-	public boolean valid(int x, int y) {
-		if (x >= maze.get(0).size() || x < 0)
+	public boolean valid(int row, int col) {
+		if (col >= maze.get(0).size() || col < 0) {
+			System.out.println("Col out of bounds");
 			return false;
-		else if (y >= maze.size() || y < 0)
+		} else if (row >= maze.size() || row < 0) {
+			System.out.println("Row out of bounds");
 			return false;
-		else return (maze.get(y).get(x) == ' ');
+		} else if (maze.get(row).get(col) == 'C') {
+			System.out.println("Found C");
+			return true;
+		} else {
+			System.out.println("Space or #");
+			return (maze.get(row).get(col) == ' ');
+		}
 	}
 	
-	public boolean findM(int x, int y) {
+	public boolean findM(int row, int col) throws IOException{
+		InputStreamReader reader = new InputStreamReader(System.in);
+		BufferedReader input = new BufferedReader(reader);
 		
-		boolean found = false;
+		input.readLine();
+		System.out.println();
+		printArray();
+		System.out.println("Row:" + (row+1) + " Col:" + (col+1) + " Valid:" + valid(row, col));
+		boolean found = maze.get(row).get(col) == 'M';
 		
-		if (valid(x, y)) {
+		if (valid(row, col)) {
 			
-			ArrayList<Character> line = new ArrayList<Character>(); //marking path with O
-			line = maze.get(y);
-			line.set(x, 'O');
-			maze.set(y, line);
+			changeChar(row, col, 'O'); //marking path with O
 			
-			if (maze.get(y).get(x) == 'M') found = true;
-			else {
-				found = findM(x + 1, y);
-				if (!found)
-					found = findM(x - 1, y);
-				if (!found)
-					found = findM(x, y + 1);
-				if (!found)
-					found = findM(x, y - 1);
-			}
+			if (found == false)
+				found = findM(row + 1, col);
+			if (found == false)
+				found = findM(row - 1, col);
+			if (found == false)
+				found = findM(row, col + 1);
+			if (found == false)
+				found = findM(row, col - 1);
 		}
 	
 		return found;
+	}
+	
+	public void changeChar(int row, int col, char x) {
+		ArrayList<Character> line = new ArrayList<Character>(); //marking path with O
+		line = maze.get(row);
+		line.set(col, x);
+		maze.set(row, line);
 	}
 	
 	public void printArray() {
@@ -112,8 +125,10 @@ public class CatNMouse {
 		maze.readFile();
 		
 		maze.printArray();
-		maze.findM(0, maze.findC());
+		int C = maze.findC();
+		maze.findM(0, C);
 	
+		maze.changeChar(0, C, 'C');
 		System.out.println();
 		maze.printArray();
 		

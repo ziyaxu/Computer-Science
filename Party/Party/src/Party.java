@@ -51,6 +51,8 @@ public class Party {
 			Guest guest = new Guest(first, last, company, attendance);
 			guestList.add(guest);
 		}
+		
+		//TODO: put guests in order as you go
 	}
 	
 	/**
@@ -180,6 +182,7 @@ public class Party {
 	 * @return index of guest, -1 if not in list
 	 */
 	public int searchGuests(String first, String last) {
+		sortGuests();
 		
 		int pos = 0, end = guestList.size() - 1;
 		Guest compare = new Guest(first, last, "", "");
