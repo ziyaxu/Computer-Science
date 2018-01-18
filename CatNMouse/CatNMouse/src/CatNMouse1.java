@@ -56,39 +56,47 @@ public class CatNMouse {
 		return -1;
 	}
 	
+	public boolean valid(int row, int col) {
+		if (col >= maze.get(0).size() || col < 0) {
+			System.out.println("Col out of bounds");
+			return false;
+		} else if (row >= maze.size() || row < 0) {
+			System.out.println("Row out of bounds");
+			return false;
+		} else if (maze.get(row).get(col) == 'C') {
+			System.out.println("Found C");
+			return true;
+		} else {
+			System.out.println("Space or #");
+			return (maze.get(row).get(col) == ' ');
+		}
+	}
+	
 	public boolean findM(int row, int col) throws IOException{
-//		InputStreamReader reader = new InputStreamReader(System.in);
-//		BufferedReader input = new BufferedReader(reader);
-//		input.readLine();
+		InputStreamReader reader = new InputStreamReader(System.in);
+		BufferedReader input = new BufferedReader(reader);
+		
+		input.readLine();
 		System.out.println();
 		printArray();
-		System.out.println("Row:" + (row+1) + " Col:" + (col+1));
-
-		if (col >= maze.get(0).size() || col < 0
-				|| row >= maze.size() || row < 0
-				|| maze.get(row).get(col) == 'O'
-				|| maze.get(row).get(col) == '#')
-			return false;
-		else {
+		System.out.println("Row:" + (row+1) + " Col:" + (col+1) + " Valid:" + valid(row, col));
+		boolean found = maze.get(row).get(col) == 'M';
+		
+		if (valid(row, col)) {
 			
-			if (maze.get(row).get(col) == 'M') {
-				return true;
-			}
 			changeChar(row, col, 'O'); //marking path with O
-				
-			if (findM(row + 1, col)) //down
-				return true;
-			if (findM(row, col + 1)) //right
-				return true;
-			if (findM(row - 1, col)) //up
-				return true;
-			if (findM(row, col - 1)) //left
-				return true;
 			
-			changeChar(row, col, ' '); //marking path with O
-			return false;	
+			if (found == false)
+				found = findM(row + 1, col);
+			if (found == false)
+				found = findM(row - 1, col);
+			if (found == false)
+				found = findM(row, col + 1);
+			if (found == false)
+				found = findM(row, col - 1);
 		}
-
+	
+		return found;
 	}
 	
 	public void changeChar(int row, int col, char x) {
