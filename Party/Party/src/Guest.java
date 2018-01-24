@@ -51,7 +51,7 @@ public class Guest {
 	}
 	
 	public String toStatementString() {
-		return firstName + ", " + lastName + " works for " + getCompany() 
+		return lastName + ", " + firstName + " works for " + getCompany() 
 		+ " and his or her attendance is " + getAttendance();
 	}
 	

@@ -51,8 +51,6 @@ public class Party {
 			Guest guest = new Guest(first, last, company, attendance);
 			guestList.add(guest);
 		}
-		
-		//TODO: put guests in order as you go
 	}
 	
 	/**
@@ -127,7 +125,7 @@ public class Party {
 	/**
 	 * Asks user to enter a value
 	 * @param type of input
-	 * @return value enteres
+	 * @return value entered
 	 * @throws IOException
 	 */
 	public String ask(String type) throws IOException {
@@ -266,7 +264,7 @@ public class Party {
 	 */
 	public void A() throws IOException {
 		
-		Guest entered = new Guest (ask(FIRST), ask(LAST), ask(COMPANY), askAttendance());
+		Guest entered = new Guest(ask(FIRST), ask(LAST), ask(COMPANY), askAttendance());
 		
 		int pos = searchGuests(entered.getFirstName(), entered.getLastName());
 		if (pos >= 0)
@@ -287,12 +285,12 @@ public class Party {
 	 * @throws IOException
 	 */
 	public void R() throws IOException {
-		Guest entered = new Guest (ask(FIRST), ask(LAST), askAttendance(), "");
+		Guest entered = new Guest(ask(FIRST), ask(LAST), "", askAttendance());
 		
 		int pos = searchGuests(entered.getFirstName(), entered.getLastName());
 		if (pos < 0)
 			System.out.println("Sorry, that guest is not on the list.");
-		else if (guestList.get(pos).getAttendance() == entered.getAttendance()) {
+		else if (guestList.get(pos).getAttendance().equals(entered.getAttendance())) {
 			System.out.println("The response is " + entered.getAttendance() + " and it has not changed.");
 		} else {
 			guestList.get(pos).setAttendance(entered.getAttendance());
@@ -350,3 +348,807 @@ public class Party {
 	}
 
 }
+
+// Output
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//L
+//Last, First	Company	Attendance
+//Field, April	APL	maybe
+//Field, Electromagnetic	APL	maybe
+//Field, Sally	APL	maybe
+//Field, Zoe	APL	maybe
+//Geek, Ima	DGT	no
+//Guest, Sally	DGT	no
+//Guest, Zoe	APL	yes
+//Keys, Qwerty	IBM	no
+//Kulate, Cal	DGT	no
+//List, Linc	APL	yes
+//Nerd, Ura	IBM	maybe
+//Pascal, Blaise	APL	no
+//Queue, Suzy	IBM	no
+//Windoes, Closda	APL	yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Ima
+//Please enter the guest's last name.
+//Geek
+//Geek, Ima works for DGT and his or her attendance is no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Pointoa
+//Please enter the guest's last name.
+//List
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Closda
+//Please enter the guest's last name.
+//Windoes
+//Windoes, Closda works for APL and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//N
+//3 people are attending, 6 people are not attending, and 5 have not responded.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Electromagnetic
+//Please enter the guest's last name.
+//Field
+//Field, Electromagnetic works for APL and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Olivia
+//Please enter the guest's last name.
+//Apple
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Asdfgh
+//Please enter the guest's last name.
+//Keys
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//John
+//Please enter the guest's last name.
+//Pappoudoupolivsky
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Sally
+//Please enter the guest's last name.
+//Field
+//Field, Sally works for APL and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//April
+//Please enter the guest's last name.
+//Field
+//Field, April works for APL and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Ima
+//Please enter the guest's last name.
+//Guest
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//X
+//Please enter a valid code.
+//Y
+//Please enter a valid code.
+//Z
+//Please enter a valid code.
+//L
+//Last, First	Company	Attendance
+//Field, April	APL	maybe
+//Field, Electromagnetic	APL	maybe
+//Field, Sally	APL	maybe
+//Field, Zoe	APL	maybe
+//Geek, Ima	DGT	no
+//Guest, Sally	DGT	no
+//Guest, Zoe	APL	yes
+//Keys, Qwerty	IBM	no
+//Kulate, Cal	DGT	no
+//List, Linc	APL	yes
+//Nerd, Ura	IBM	maybe
+//Pascal, Blaise	APL	no
+//Queue, Suzy	IBM	no
+//Windoes, Closda	APL	yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Blaise
+//Please enter the guest's last name.
+//Pascal
+//Pascal, Blaise works for APL and his or her attendance is no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Suzy
+//Please enter the guest's last name.
+//Queue
+//Please enter the guest's company.
+//IBM
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//no
+//They are already on the list. Queue, Suzy works for IBM and his or her attendance is no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Asdfgh
+//Please enter the guest's last name.
+//Keys
+//Please enter the guest's company.
+//DGT
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//We are adding a new guest to list: Keys, Asdfgh works for DGT and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Mike
+//Please enter the guest's last name.
+//Rochip
+//Please enter the guest's company.
+//DGT
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//?
+//We are adding a new guest to list: Rochip, Mike works for DGT and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//R
+//Please enter the guest's first name.
+//Ima
+//Please enter the guest's last name.
+//Geek
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//The response has been changed to yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Amy
+//Please enter the guest's last name.
+//Rochip
+//Please enter the guest's company.
+//IBM
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//?
+//We are adding a new guest to list: Rochip, Amy works for IBM and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Didja
+//Please enter the guest's last name.
+//Windoes
+//Please enter the guest's company.
+//APL
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//We are adding a new guest to list: Windoes, Didja works for APL and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Data
+//Please enter the guest's last name.
+//Field
+//Please enter the guest's company.
+//APL
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//no
+//We are adding a new guest to list: Field, Data works for APL and his or her attendance is no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//R
+//Please enter the guest's first name.
+//Seymour
+//Please enter the guest's last name.
+//Math
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//R
+//Please enter the guest's first name.
+//Elena
+//Please enter the guest's last name.
+//Zaitsoff
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//?
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Howard
+//Please enter the guest's last name.
+//Yadoing
+//Please enter the guest's company.
+//DGT
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//no
+//We are adding a new guest to list: Yadoing, Howard works for DGT and his or her attendance is no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//R
+//Please enter the guest's first name.
+//Asdfgh
+//Please enter the guest's last name.
+//Keys
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//no
+//The response has been changed to no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//R
+//Please enter the guest's first name.
+//Mike
+//Please enter the guest's last name.
+//Rochip
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//?
+//The response has been changed to maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//R
+//Please enter the guest's first name.
+//Alice
+//Please enter the guest's last name.
+//Ardvaark
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Alice
+//Please enter the guest's last name.
+//Ardvaark
+//Please enter the guest's company.
+//IBM
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//We are adding a new guest to list: Alice, Ardvaark works for IBM and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Amy
+//Please enter the guest's last name.
+//Rochip
+//Rochip, Amy works for IBM and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Beth
+//Please enter the guest's last name.
+//Yerrmoniesworth
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//L
+//Last, First	Company	Attendance
+//Ardvaark, Alice	IBM	yes
+//Field, April	APL	maybe
+//Field, Data	APL	no
+//Field, Electromagnetic	APL	maybe
+//Field, Sally	APL	maybe
+//Field, Zoe	APL	maybe
+//Geek, Ima	DGT	yes
+//Guest, Sally	DGT	no
+//Guest, Zoe	APL	yes
+//Keys, Asdfgh	DGT	no
+//Keys, Qwerty	IBM	no
+//Kulate, Cal	DGT	no
+//List, Linc	APL	yes
+//Nerd, Ura	IBM	maybe
+//Pascal, Blaise	APL	no
+//Queue, Suzy	IBM	no
+//Rochip, Amy	IBM	maybe
+//Rochip, Mike	DGT	maybe
+//Windoes, Closda	APL	yes
+//Windoes, Didja	APL	yes
+//Yadoing, Howard	DGT	no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Data
+//Please enter the guest's last name.
+//Field
+//Please enter the guest's company.
+//APL
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//no
+//They are already on the list. Field, Data works for APL and his or her attendance is no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Genevieve
+//Please enter the guest's last name.
+//Stapos
+//Please enter the guest's company.
+//DGT
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//We are adding a new guest to list: Stapos, Genevieve works for DGT and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Abe
+//Please enter the guest's last name.
+//Ardvaark
+//Please enter the guest's company.
+//IBM
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//?
+//We are adding a new guest to list: Ardvaark, Abe works for IBM and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Doyour
+//Please enter the guest's last name.
+//Math
+//Please enter the guest's company.
+//DGT
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//?
+//We are adding a new guest to list: Math, Doyour works for DGT and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Iluv
+//Please enter the guest's last name.
+//Math
+//Please enter the guest's company.
+//DGT
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//We are adding a new guest to list: Math, Iluv works for DGT and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//C
+//Please enter the guest's first name.
+//Cal
+//Please enter the guest's last name.
+//Kulate
+//Colleagues are:
+//Geek, Ima works for DGT and his or her attendance is 
+//Guest, Sally works for DGT and his or her attendance is no
+//Keys, Asdfgh works for DGT and his or her attendance is 
+//Math, Doyour works for DGT and his or her attendance is maybe
+//Math, Iluv works for DGT and his or her attendance is yes
+//Rochip, Mike works for DGT and his or her attendance is 
+//Stapos, Genevieve works for DGT and his or her attendance is yes
+//Yadoing, Howard works for DGT and his or her attendance is no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//C
+//Please enter the guest's first name.
+//Linc
+//Please enter the guest's last name.
+//List
+//Colleagues are:
+//Field, April works for APL and his or her attendance is maybe
+//Field, Data works for APL and his or her attendance is no
+//Field, Electromagnetic works for APL and his or her attendance is maybe
+//Field, Sally works for APL and his or her attendance is maybe
+//Field, Zoe works for APL and his or her attendance is maybe
+//Guest, Zoe works for APL and his or her attendance is yes
+//Pascal, Blaise works for APL and his or her attendance is no
+//Windoes, Closda works for APL and his or her attendance is yes
+//Windoes, Didja works for APL and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//C
+//Please enter the guest's first name.
+//Alice
+//Please enter the guest's last name.
+//Ardvaark
+//Colleagues are:
+//Ardvaark, Abe works for IBM and his or her attendance is maybe
+//Keys, Qwerty works for IBM and his or her attendance is no
+//Nerd, Ura works for IBM and his or her attendance is maybe
+//Queue, Suzy works for IBM and his or her attendance is no
+//Rochip Amy works for IBM and his or her attendance is maybe
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//A
+//Please enter the guest's first name.
+//Sally
+//Please enter the guest's last name.
+//Pascal
+//Please enter the guest's company.
+//FCA
+//Please enter the guest's attendance as 'yes', 'no', or '?'.
+//yes
+//We are adding a new guest to list: Pascal, Sally works for FCA and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Sally
+//Please enter the guest's last name.
+//Pascal
+//Pascal, Sally works for FCA and his or her attendance is yes
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//C
+//Please enter the guest's first name.
+//Sally
+//Please enter the guest's last name.
+//Pascal
+//Colleagues are:
+//They have no colleagues.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//G
+//Please enter the guest's first name.
+//Blaise
+//Please enter the guest's last name.
+//Field
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//C
+//Please enter the guest's first name.
+//Jane
+//Please enter the guest's last name.
+//Doe
+//Sorry, that guest is not on the list.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//N
+//9 people are attending, 8 people are not attending, and 9 have not responded.
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//L
+//Last, First	Company	Attendance
+//Ardvaark, Abe	IBM	maybe
+//Ardvaark, Alice	IBM	yes
+//Field, April	APL	maybe
+//Field, Data	APL	no
+//Field, Electromagnetic	APL	maybe
+//Field, Sally	APL	maybe
+//Field, Zoe	APL	maybe
+//Geek, Ima	DGT	yes
+//Guest, Sally	DGT	no
+//Guest, Zoe	APL	yes
+//Keys, Asdfgh	DGT	no
+//Keys, Qwerty	IBM	no
+//Kulate, Cal	DGT	no
+//List, Linc	APL	yes
+//Math, Doyour	DGT	maybe
+//Math, Iluv	DGT	yes
+//Nerd, Ura	IBM	maybe
+//Pascal, Blaise	APL	no
+//Pascal, Sally	FCA	yes
+//Queue, Suzy	IBM	no
+//Rochip, Amy	IBM	maybe
+//Rochip, Mike	DGT	maybe
+//Stapos, Genevieve	DGT	yes
+//Windoes, Closda	APL	yes
+//Windoes, Didja	APL	yes
+//Yadoing, Howard	DGT	no
+//Enter one of the following commands:
+//'G' for guest information of a specified guest
+//'L' to list guests
+//'N' for the number of guests attending, declining, or unknown
+//'A' to add a new guest
+//'R' to change guest response
+//'C' to find the colleagues of an entered guest
+//'Q' to quit the program
+//Q
+//You have quit. Thanks for using this program!
