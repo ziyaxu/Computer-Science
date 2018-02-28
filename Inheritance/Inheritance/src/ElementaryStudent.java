@@ -15,8 +15,7 @@ public class ElementaryStudent implements Student {
 	}
 	
 	public int getGrade() {
-		if (grade == 0) return 'K';
-		else return grade;
+		return grade;
 	}
 	
 	public String getFirstName() {
@@ -40,7 +39,11 @@ public class ElementaryStudent implements Student {
 	}
 	
 	public String toString() {
-		return first + " " + last + " is in grade " + grade;
+		String stringGrade;
+		if (getGrade() == 0) stringGrade = "K";
+		else stringGrade = "" + getGrade();
+		
+		return first + " " + last + " is in grade " + stringGrade;
 	}
 	
 }

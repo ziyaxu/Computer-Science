@@ -4,11 +4,10 @@ public class Senior extends HSStudent{
 	private boolean portfolioComplete;
 	private double finesOwed;
 	
+	public Senior() {}
+	
 	public Senior(String first, String last, int grade, double qpa, boolean portfolio, double fines) {
-		setFirstName(first);
-		setLastName(last);
-		setGrade(grade);
-		setQPA(qpa);
+		super(first, last, grade, qpa);
 		portfolioComplete = portfolio;
 		finesOwed = fines;
 	}
@@ -39,7 +38,8 @@ public class Senior extends HSStudent{
 	}
 	
 	public String toString() {
-		return super.toString() + '\n' + getFirstName() + " " + getLastName() + " owes $" + finesOwed + " in fines to the school.";
+		return super.toString() + '\n' + getFirstName() + " " + getLastName() + " owes $" + finesOwed + " in fines to the school."
+				+ '\n' + portfolioCompleteToString();
 	}
 
 }

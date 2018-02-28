@@ -79,8 +79,10 @@ public class School {
 	}
 	
 	public void printStudents() {
-		for (Student student: school)
+		for (Student student: school) {
 			System.out.println(student.toString());
+			System.out.println();
+		}
 	}
 	
 	public static void main (String[] args) throws IOException {
@@ -90,3 +92,23 @@ public class School {
 		foxChapel.printStudents();
 	}
 }
+
+//OUTPUT
+//Freshman Amanda Apple is in grade 9 with a 4.0 qpa.
+//Amanda Apple has 0 referrals.
+//
+//Freshman Sally Apple is in grade 9 with a 4.0 qpa.
+//Sally Apple has 0 referrals.
+//
+//Sophomore Taylor Beans is in grade 10 with a 1.0 qpa.
+//Taylor Beans's freshman year math grade is C.
+//
+//Sophomore Taylor Smith is in grade 10 with a 3.3 qpa.
+//Taylor Smith's freshman year math grade is A.
+//
+//Junior Johnny Apple is in grade 11 with a 4.0 qpa.
+//Johnny Apple's keystone level is Advanced.
+//
+//Senior Bob Smith is in grade 12 with a 2.0 qpa.
+//Bob Smith owes $45.0 in fines to the school.
+//Bob Smith has completed his or her portfolio.

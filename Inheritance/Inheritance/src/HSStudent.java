@@ -5,9 +5,7 @@ public abstract class HSStudent implements Student, Comparable<HSStudent>{
 	private int grade;
 	private double qpa;
 	
-	public HSStudent() {
-		
-	}
+	public HSStudent() {}
 	
 	public HSStudent(String first, String last, int grade, double qpa) {
 		this.first = first;
@@ -16,9 +14,10 @@ public abstract class HSStudent implements Student, Comparable<HSStudent>{
 		this.qpa = qpa;
 	}
 	
+	public abstract String getGradeString();
+	
 	public int getGrade() {
-		if (grade == 0) return 'K';
-		else return grade;
+		return grade;
 	}
 	
 	public String getFirstName() {
@@ -50,10 +49,8 @@ public abstract class HSStudent implements Student, Comparable<HSStudent>{
 	}
 	
 	public String toString() {
-		return first + " " + last + " is in grade " + grade + " with a " + qpa + " qpa.";
+		return getGradeString() + " " + first + " " + last + " is in grade " + grade + " with a " + qpa + " qpa.";
 	}
-	
-	public abstract String getGradeString();
 	
 	public int compareTo(HSStudent student) {
 		int compareLast = getLastName().compareToIgnoreCase(student.getLastName());

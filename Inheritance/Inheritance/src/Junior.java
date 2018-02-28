@@ -1,8 +1,9 @@
 
 public class Junior extends HSStudent{
 	
-	//TODO: Can I have Keystone grade as an int or should I actually make it a String?
 	private int keystoneGrade;
+	
+	public Junior() {}
 	
 	public Junior(String first, String last, int grade, double qpa, int keystone) {
 		setFirstName(first);

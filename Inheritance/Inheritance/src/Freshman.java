@@ -3,11 +3,16 @@ public class Freshman extends HSStudent{
 
 	private int numReferrals;
 	
+	public Freshman() {}
+	
 	public Freshman(String first, String last, int grade, double qpa, int referrals) {
 		setFirstName(first);
 		setLastName(last);
 		setGrade(grade);
 		setQPA(qpa);
+	}
+	
+	public Freshman(int referrals) {
 		numReferrals = referrals;
 	}
 	

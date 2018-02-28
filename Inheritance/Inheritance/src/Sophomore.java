@@ -3,6 +3,8 @@ public class Sophomore extends HSStudent{
 	
 	private char ninthMathGrade;
 	
+	public Sophomore() {}
+	
 	public Sophomore(String first, String last, int grade, double qpa, char mathGrade) {
 		setFirstName(first);
 		setLastName(last);
